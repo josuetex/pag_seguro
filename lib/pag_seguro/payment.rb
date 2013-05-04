@@ -32,7 +32,7 @@ module PagSeguro
     
     def checkout_xml
       xml_content = File.open( File.dirname(__FILE__) + "/checkout.xml.haml" ).read
-      Haml::Engine.new(xml_content).render(nil, items: @items, payment: self, sender: @sender, shipping: @shipping, pre_approval: @pre_approval)
+      Haml::Engine.new(xml_content).render(Object.new, items: @items, payment: self, sender: @sender, shipping: @shipping, pre_approval: @pre_approval)
     end
     
     def checkout_url_with_params
